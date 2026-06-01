@@ -16,9 +16,11 @@ SECRET_KEY = os.getenv(
 DEBUG = os.getenv('DEBUG', 'True').strip().lower() in {'1', 'true', 'yes', 'on'}
 
 ALLOWED_HOSTS = [
-    host.strip()
-    for host in os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,testserver').split(',')
-    if host.strip()
+    'localhost',
+    '127.0.0.1',
+    'testserver',
+    'cashnova-backend-n9os.onrender.com',
+    'cashnova-pi.vercel.app',
 ]
 
 INSTALLED_APPS = [
