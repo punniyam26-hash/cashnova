@@ -1,11 +1,9 @@
 """
 Django settings for cashnova_backend project.
 """
-
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,10 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'rest_framework',
     'corsheaders',
-
     'accounts',
     'apps.users',
     'apps.categories',
@@ -99,11 +95,10 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # CORS
-CORS_ALLOW_ALL_ORIGINS = os.getenv('CORS_ALLOW_ALL_ORIGINS', 'True').strip().lower() in {
-    '1', 'true', 'yes', 'on',
-}
+CORS_ALLOW_ALL_ORIGINS = False
+
 CORS_ALLOWED_ORIGINS = [
-    origin.strip()
-    for origin in os.getenv('CORS_ALLOWED_ORIGINS', '').split(',')
-    if origin.strip()
+    "https://cashnova-pi.vercel.app",
 ]
+
+CORS_ALLOW_CREDENTIALS = True
